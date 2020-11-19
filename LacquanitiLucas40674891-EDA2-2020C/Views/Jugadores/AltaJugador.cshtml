@@ -1,0 +1,20 @@
+﻿@model Repositories.Jugador
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <h2>Agregar Jugador</h2>
+
+    <form method="post" action="/Jugadores/AltaJugador">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            @Html.EditorFor(Model => Model.Nombre, new { htmlAttributes = new { @placeholder = "Nombre" } })
+            @Html.ValidationMessageFor(Model => Model.Nombre)
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+

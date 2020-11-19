@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PW3EA2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GolesPorJugadorEquipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantidadGoles" Type="int" Nullable="false" />
+          <Property Name="Equipo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdJugador" Type="int" />
+        </EntityType>
+        <EntityType Name="Jugador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__GolesPorJ__IdJug__1273C1CD">
+          <End Role="Jugador" Type="Self.Jugador" Multiplicity="0..1" />
+          <End Role="GolesPorJugadorEquipo" Type="Self.GolesPorJugadorEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugador">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GolesPorJugadorEquipo">
+              <PropertyRef Name="IdJugador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PW3EA2ModelStoreContainer">
+          <EntitySet Name="GolesPorJugadorEquipo" EntityType="Self.GolesPorJugadorEquipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jugador" EntityType="Self.Jugador" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__GolesPorJ__IdJug__1273C1CD" Association="Self.FK__GolesPorJ__IdJug__1273C1CD">
+            <End Role="Jugador" EntitySet="Jugador" />
+            <End Role="GolesPorJugadorEquipo" EntitySet="GolesPorJugadorEquipo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PW3EA2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GolesPorJugadorEquipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantidadGoles" Type="Int32" Nullable="false" />
+          <Property Name="Equipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdJugador" Type="Int32" />
+          <NavigationProperty Name="Jugador" Relationship="Self.FK__GolesPorJ__IdJug__1273C1CD" FromRole="GolesPorJugadorEquipo" ToRole="Jugador" />
+        </EntityType>
+        <EntityType Name="Jugador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GolesPorJugadorEquipo" Relationship="Self.FK__GolesPorJ__IdJug__1273C1CD" FromRole="Jugador" ToRole="GolesPorJugadorEquipo" />
+        </EntityType>
+        <Association Name="FK__GolesPorJ__IdJug__1273C1CD">
+          <End Role="Jugador" Type="Self.Jugador" Multiplicity="0..1" />
+          <End Role="GolesPorJugadorEquipo" Type="Self.GolesPorJugadorEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jugador">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GolesPorJugadorEquipo">
+              <PropertyRef Name="IdJugador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ea2Context" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GolesPorJugadorEquipo" EntityType="Self.GolesPorJugadorEquipo" />
+          <EntitySet Name="Jugador" EntityType="Self.Jugador" />
+          <AssociationSet Name="FK__GolesPorJ__IdJug__1273C1CD" Association="Self.FK__GolesPorJ__IdJug__1273C1CD">
+            <End Role="Jugador" EntitySet="Jugador" />
+            <End Role="GolesPorJugadorEquipo" EntitySet="GolesPorJugadorEquipo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PW3EA2ModelStoreContainer" CdmEntityContainer="ea2Context">
+          <EntitySetMapping Name="GolesPorJugadorEquipo">
+            <EntityTypeMapping TypeName="PW3EA2Model.GolesPorJugadorEquipo">
+              <MappingFragment StoreEntitySet="GolesPorJugadorEquipo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CantidadGoles" ColumnName="CantidadGoles" />
+                <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+                <ScalarProperty Name="IdJugador" ColumnName="IdJugador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jugador">
+            <EntityTypeMapping TypeName="PW3EA2Model.Jugador">
+              <MappingFragment StoreEntitySet="Jugador">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

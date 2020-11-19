@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Repositories.Jugador>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <form method="get" action="/Jugadores/AltaJugador">
+        <label for="agregar-jugador">Agregar Jugador</label>
+        <input type="submit" name="agregar-jugador" value="Agregar Jugador" />
+    </form>
+    <table id="table" class="table table-striped table-bordered table-responsive w-100">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var jugador in Model)
+            {
+                <tr>
+                    <td>@jugador.Nombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
