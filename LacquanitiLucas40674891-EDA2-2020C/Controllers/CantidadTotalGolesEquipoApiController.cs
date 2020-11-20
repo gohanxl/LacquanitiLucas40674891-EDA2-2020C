@@ -21,7 +21,8 @@ namespace LacquanitiLucas40674891_EDA2_2020C.Controllers
         [HttpGet]
         public string Get(string equipo)
         {
-            return golesService.GetCantidadDeGolesByEquipo(equipo);
+            string totalCantidad = golesService.GetCantidadDeGolesByEquipo(equipo);
+            return $"Cantidad total de goles del Equipo {equipo.ToUpper()}: {totalCantidad}";
         }
     }
 }

@@ -19,12 +19,12 @@
         @Html.AntiForgeryToken()
         <div class="form-group">
             <label for="cantidad-goles">Cantidad de Goles</label>
-            @Html.EditorFor(Model => Model.CantidadGoles, new { htmlAttributes = new { @placeholder = "Cantidad de Goles" } })
+            @Html.EditorFor(Model => Model.CantidadGoles, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cantidad de Goles" } })
             @Html.ValidationMessageFor(Model => Model.CantidadGoles)
         </div>
         <div class="form-group">
             <label for="equipo">Equipo</label>
-            @Html.EditorFor(Model => Model.Equipo, new { htmlAttributes = new { @placeholder = "Equipo" } })
+            @Html.EditorFor(Model => Model.Equipo, new { htmlAttributes = new { @class = "form-control", @placeholder = "Equipo" } })
             @Html.ValidationMessageFor(Model => Model.Equipo)
         </div>
         <div class="form-group">
@@ -32,6 +32,6 @@
             @Html.DropDownListFor(Model => Model.IdJugador, jugadoresItems, new { @class = "form-control" })
             @Html.ValidationMessageFor(Model => Model.IdJugador)
         </div>
-        <button type="submit">Enviar</button>
+        <button class="btn btn-primary" type="submit">Enviar</button>
     </form>
 </section>
