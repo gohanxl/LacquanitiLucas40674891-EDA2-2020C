@@ -88,11 +88,13 @@ namespace Repositories.Repositories
 
         public string GetCantidadDeGolesByEquipo(string equipo)
         {
-            var rowByEquipo = ctx.GolesPorJugadorEquipo.FirstOrDefault(row => row.Equipo == equipo);
+            int golesByEquipo = ctx.GolesPorJugadorEquipo
+                            .Where(g => g.Equipo.ToUpper() == equipo.ToUpper())
+                            .GroupBy(g => g.Equipo)
+                            .Select(g => g.Sum(c => c.CantidadGoles))
+                            .First();
 
-            var parsedCantidadDeGoles = rowByEquipo.CantidadGoles.ToString();
-
-            return parsedCantidadDeGoles;
+            return golesByEquipo.ToString();
         }
     }
 }
