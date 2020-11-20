@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace Repositories.Repositories
 {
-    public class JugadoresRepository<T> : IEnumerable<T>, IRepository<T> where T : class
+    public class GolesRepository<T> : IEnumerable<T>, IRepository<T> where T : class
     {
         ea2Context ctx;
         private DbSet<T> defaultObject;
 
-        public JugadoresRepository(ea2Context context)
+        public GolesRepository(ea2Context context)
         {
             ctx = context;
             defaultObject = ctx.Set<T>();
@@ -76,6 +76,23 @@ namespace Repositories.Repositories
         IEnumerator IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
+        }
+
+        public GolesPorJugadorEquipo GetShouldUpdateJugadorInEquipo(int? id, string equipo)
+        {
+            var parsedEquipo = equipo.ToUpper();
+            var rowsWithJugadorId = ctx.GolesPorJugadorEquipo.FirstOrDefault(row => row.IdJugador == id && row.Equipo.ToUpper() == parsedEquipo);
+
+            return rowsWithJugadorId;
+        }
+
+        public string GetCantidadDeGolesByEquipo(string equipo)
+        {
+            var rowByEquipo = ctx.GolesPorJugadorEquipo.FirstOrDefault(row => row.Equipo == equipo);
+
+            var parsedCantidadDeGoles = rowByEquipo.CantidadGoles.ToString();
+
+            return parsedCantidadDeGoles;
         }
     }
 }

@@ -8,6 +8,7 @@
     <h2>Agregar Jugador</h2>
 
     <form method="post" action="/Jugadores/AltaJugador">
+        @Html.AntiForgeryToken()
         <div class="form-group">
             <label for="nombre">Nombre</label>
             @Html.EditorFor(Model => Model.Nombre, new { htmlAttributes = new { @placeholder = "Nombre" } })

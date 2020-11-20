@@ -1,14 +1,32 @@
-﻿@{
+﻿@model IEnumerable<Repositories.GolesPorJugadorEquipo>
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section>
-    <h1>
-        Bienvenido/a a la evaluación de aprendizaje Nro 2
-    </h1>
-    <div>
-        <a href="#">pepe</a>
-        <a href="#">pepe</a>
-    </div>
+    <form method="get" action="/Goles/AltaGolesJugador">
+        <label for="registro-goles">Crear Nuevo Registro de Goles</label>
+        <input type="submit" name="registro-goles" value="Crear Nuevo Registro de Goles" />
+    </form>
+    <table id="table" class="table table-striped table-bordered table-responsive w-100">
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Cantidad de Goles</th>
+                <th>Jugador (Nombre)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gol in Model)
+            {
+            <tr>
+                <td>@gol.Equipo</td>
+                <td>@gol.CantidadGoles</td>
+                <td>@gol.Jugador.Nombre</td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </section>
 
