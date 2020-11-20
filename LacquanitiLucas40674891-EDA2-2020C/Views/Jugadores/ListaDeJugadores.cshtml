@@ -5,11 +5,13 @@
 }
 
 <section>
-    <form method="get" action="/Jugadores/AltaJugador">
+    <form method="get" action="/Jugadores/AltaJugador" class="d-flex align-items-center justify-content-between mb-3">
         <label for="agregar-jugador">Agregar Jugador</label>
-        <input type="submit" name="agregar-jugador" value="Agregar Jugador" />
+        <button class="btn btn-primary" type="submit" name="agregar-jugador">
+            Agregar
+        </button>
     </form>
-    <table id="table" class="table table-striped table-bordered table-responsive w-100">
+    <table id="table" class="table table-striped table-responsive w-100">
         <thead>
             <tr>
                 <th>Nombre</th>

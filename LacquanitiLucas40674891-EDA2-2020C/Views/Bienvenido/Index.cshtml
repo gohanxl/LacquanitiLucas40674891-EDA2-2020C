@@ -2,17 +2,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section>
-    <h1>
+<section class="d-flex flex-column align-items-center">
+    <h1 class="mb-5">
         Bienvenido/a a la evaluación de aprendizaje Nro 2
     </h1>
-    <div>
-        <a href="@Url.Action("Index", "Jugadores")" id="lista-jugadores">
-            Ir a Administrar de Jugadores de Futbol
-        </a>
-        <a href="@Url.Action("Index", "Goles")" id="lista-goles">
-            Administrar Goles
-        </a>
-    </div>
+    <figure class="text-center mb-5">
+        <img src="~/Images/gatito.gif" alt="gatito" />
+        <figcaption class="mt-2">Yo esperando la nota de la evaluacion, un poco de humor!</figcaption>
+    </figure>
+    <ul class="list-unstyled">
+        <li>
+            <a href="@Url.Action("Index", "Jugadores")" id="lista-jugadores">
+                Ir a Administrar de Jugadores de Futbol
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "Goles")" id="lista-goles">
+                Administrar Goles
+            </a>
+        </li>
+    </ul>
 </section>
 

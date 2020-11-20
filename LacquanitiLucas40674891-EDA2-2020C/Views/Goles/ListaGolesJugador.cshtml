@@ -5,11 +5,13 @@
 }
 
 <section>
-    <form method="get" action="/Goles/AltaGolesJugador">
+    <form method="get" action="/Goles/AltaGolesJugador" class="d-flex align-items-center justify-content-between mb-3">
         <label for="registro-goles">Crear Nuevo Registro de Goles</label>
-        <input type="submit" name="registro-goles" value="Crear Nuevo Registro de Goles" />
+        <button class="btn btn-primary" type="submit" name="registro-goles">
+           Agregar
+        </button>
     </form>
-    <table id="table" class="table table-striped table-bordered table-responsive w-100">
+    <table id="table" class="table table-striped table-responsive w-100">
         <thead>
             <tr>
                 <th>Equipo</th>
@@ -20,11 +22,11 @@
         <tbody>
             @foreach (var gol in Model)
             {
-            <tr>
-                <td>@gol.Equipo</td>
-                <td>@gol.CantidadGoles</td>
-                <td>@gol.Jugador.Nombre</td>
-            </tr>
+                <tr>
+                    <td>@gol.Equipo</td>
+                    <td>@gol.CantidadGoles</td>
+                    <td>@gol.Jugador.Nombre</td>
+                </tr>
             }
         </tbody>
     </table>

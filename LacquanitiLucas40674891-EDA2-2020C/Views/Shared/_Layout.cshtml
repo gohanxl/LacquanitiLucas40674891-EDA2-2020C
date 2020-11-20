@@ -3,12 +3,13 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <link href="~/Styles/bootstrap.min.css" rel="stylesheet" />
+    <title>EDA 2 - PW 3</title>
 </head>
-<body>
-    <div>
+<body class="vh-100">
+    <div class="container d-flex flex-column justify-content-center align-items-center h-100">
         @RenderBody()
+        @{Html.RenderPartial("_pv_Footer");}
     </div>
-    @{Html.RenderPartial("_pv_Footer");}
 </body>
 </html>
